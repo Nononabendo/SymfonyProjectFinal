@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier{% endblock %}
+
+{% block body %}
+    <div class="container-fluid monPanier">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mt-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {% if cart is empty %}
+                                {% if is_granted("ROLE_USER") or is_granted("ROLE_ADMIN") %}
+                                    <p>Vous n'avez pas encore ajouté de produit à votre panier.</p>
+                                    <br/><br/>
+                                    <hr/>
+                                    <a href="{{ path('products') }}" class="btn btn-primary">Allez à la boutique</a>
+                                {% else %}
+                                <div>
+                                    <p>Vous n'avez pas encore ajouté de produit à votre panier.</p>
+                                    <a href="{{ path('app_login') }}" class="btn btn-primary">Connecter-vous à votre compte</a>
+                                    <a href="{{ path('inscription') }}" class="btn btn-secondary">Inscrivez-vous maintenant</a>
+                                </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% if cart %}
+                        <h1 class="text-white mb-5" ><span>M</span>on <span>P</span>anier</h1>
+                        <p class="text-white "><b>récapitulatif de la commande<b></p>
+                        <div class="row">
+                            <div class="col-md-8">                             
+                                <table class="w3-table w3-bordered w3-center">
+                                    <thead>
+                                        <tr>
+                                            <div class="row " >
+                                                <th class=" text-center col-3">Produit</th> {# scope similaire à classe utilisable uniquement pour les tableau html#}
+                                                {# <th ></th> #}
+                                                <th class=" text-center col-3">Quantité</th>
+                                                <th class=" text-center col-3">Prix</th>
+                                                <th class=" text-center col-3">Total</th>
+                                            </div>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% set total = null %} {# on initialise la variable total à null (prix du panier) #}
+
+                                        {% for product in cart %}
+                                            <tr>
+                                                {# <td><img src="{{ asset('uploads/' ~ product.product.illustration) }}" alt="{{ product.product.name }}" height="75px"><br>{{ product.product.name }}</td> #}
+                                                <div class="row">
+                                                    <td class="col-md-3 tdCartProduct">
+                                                        <div class="card mb-4 box-shadow text-white">
+                                                            <img src="{{ asset('uploads/' ~ product.product.illustration) }}" alt="{{ product.product.name }}">
+                                                            <div class="card-body border">
+                                                                <h5 class="card-title text-center"><b>{{ product.product.name }}</b></h5><br>
+                                                            </div>
+
+                                                            <div class="card-footer">
+                                                                <div class="col-md-12 ">
+                                                                    {# <a class="text-center" href="{{ path('product', {slug: product.slug}) }}" class="btn btn-sm w3-hover"> #}
+                                                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="justify-content-center col-md-3 tdCartQuantity">
+                                                        <div class="btn-toolbar my-md-auto" role="toolbar" aria-label="Toolbar with button groups">
+                                                            <div class="btn-group mx-auto" role="group" aria-label="First group">
+                                                                <div class=" my-auto">
+                                                                    <button class="btn" href="{{ path('decrease_to_cart', {'id': product.product.id}) }}"><i class="fa-solid fa-circle-minus" style="color:var(--warning);font-size:20px"></i></button>
+                                                                </div>
+                                                                <div class="my-auto p-2"><span class="text-black">x{{ product.quantity }}</span> </div>
+                                                                <div class=" my-auto">
+                                                                    {# On reste sur la page panir si on ajoute un produit #}
+
+                                                                    {#<a class="btn btn-light" href="{{ path('add_to_cart', {'id': product.product.id}) }}">
+                                                                        <i class="fas fa-cart-plus"></i>
+                                                                    </a>#}
+
+                                                                    <form action="{{ path('add_to_cart', {'id': product.product.id}) }}" method="post">
+                                                                        <input type="hidden" name="id" value="{{ product.product.id }}">
+                                                                        <button type="submit" class="btn blueAdd">
+                                                                            <i class="fas fa-cart-plus" style="color:var(--primary);font-size:20px"></i>
+                                                                        </button>
+                                                                    </form>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="col-md-3 tdCartPrice">
+                                                        <div class="cartPrice d-flex justify-content-center">
+                                                            <span class="text-black">{{ product.product.price / 100 | number_format(2, '.', '.') }} €</span>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="col-md-3 tdCartTotal">
+                                                        <div class="cartTotal d-flex justify-content-center">
+                                                            <span class="text-black">{{ (product.product.price * product.quantity / 100) | number_format(2, '.', '.') }} €</span>&nbsp;
+                                                            <a href="{{ path('delete_to_cart', {'id': product.product.id}) }}" class="text-danger">
+                                                                <i class="fas fa-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+
+                                                    {# <td>
+                                                        <a href="{{ path('delete_to_cart', {'id': product.product.id}) }}" class="text-danger">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                    </td> #}
+                                                </div>
+                                            </tr>
+                                            {% set total = total + (product.product.price * product.quantity) %} {# on ajoute le prix du produit multiplié par la quantité à la variable total #}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                           
+                            <div class="col-md-2">
+                               <div class="btn-group">
+                                    {# <a class="btn btn-outline-info" href="{{ path('decrease_to_cart', {'id': product.product.id}) }}"><i class="fa-solid fa-circle-minus"></i></a> #}
+                                    {# <div class="p-2 add-and-remove-to-cart btn btn-secondary disabled"><span>{{ product.quantity }}</span> </div>
+                                    <a class="btn btn-outline-info" href="{{ path('add_to_cart', {'id': product.product.id}) }}"><i class="fas fa-plus-circle"></i></a> #}
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <div class="float-end ">
+                                    <b>Nombre de produit : </b> {{ cart|length }}<br>
+                                    <b>Total : </b> {{ total / 100 | number_format(2, '.', '.') }} €<br>
+                                    <a href="{{ path('order') }}" class="btn btn-success btn-block mt-2">Valider mon panier</a>
+                                </div>
+                            </div>
+
+                        </div>                            
+
+
+                        <div class="float-start mt-5 mb-5">
+                            <a href="{{ path('products') }}" class="btn btn-primary">Continuer mes achats</a>
+                        </div>
+                      
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

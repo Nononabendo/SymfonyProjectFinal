@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte : Boutique poles{% endblock %}
+
+{% block body %}
+    {# <div class="container">
+        <h1>Mon compte</h1>
+
+        <p>
+            Bienvenu <span class="id-nameMembre">{{ app.user.firstname }} {{ app.user.lastname }}</span> dans votre espace membre.<br>
+            Vous pouvez modifier vos informations personnelles en cliquant sur le bouton ci-dessous.
+            <a  class="" href="{{ path('app_logout') }}">Déconnexion</a>
+        </p>
+       
+        - <a href="{{ path('account_password') }}">Modifier mon mot de passe</a><br>
+        - <a href="{{ path('account_address') }}">Gérer mes adresses</a><br>
+        - Mes commandes <br>
+        - Modifier mes informations personnelles
+    </div> #}
+    <div class="container-fluid card-account text-white">
+        <div class="container">
+            <h1 class="pt-5"><span>M</span>on <span>C</span>ompte</h1>
+            <p>Bienvenu <span class="id-nameMembre">{{ app.user.firstname }} {{ app.user.lastname }}</span> dans votre espace membre.<br></p>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Mes Adresses</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Primary card title</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. At, eligendi.</p>
+                            <button type="button" class="btn bckg-ciel btn-lg"><a href="{{ path('account_address') }}">Gérer mes adresses</a></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Mot de Passe</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Primary card title</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. At, eligendi.</p>
+                            <button type="button" class=" btn bckg-ciel btn-lg"><a href="{{ path('account_password') }}">Modifier mon mot de passe</a></button>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Commandes</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Primary card title</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. At, eligendi.</p>
+                            <button type="button" class="btn bckg-ciel btn-lg"><a href="{{ path('account_order') }}">Mes commandes</a></button>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Informations Perso</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Primary card title</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. At, eligendi.</p>
+                            <button type="button" class=" btn bckg-ciel btn-lg"><a href="{{ path('account_address') }}">Informations personelles</a></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mx-auto pb-5">
+                    <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Déconnexion</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Primary card title</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. At, eligendi.</p>
+                            <button type="button" class=" btn bckg-ciel btn-lg"><a class="" href="{{ path('app_logout') }}">Déconnexion</a></button>
+                            
+                        </div>
+                    </div>
+                </div>
+                {# <p>
+                    Bienvenu <span class="id-nameMembre">{{ app.user.firstname }} {{ app.user.lastname }}</span> dans votre espace membre.<br>
+                    Vous pouvez modifier vos informations personnelles en cliquant sur le bouton ci-dessous.
+                    <a  class="" href="{{ path('app_logout') }}">Déconnexion</a>
+                </p> #}
+                {#                 
+                - <a href="{{ path('account_password') }}">Modifier mon mot de passe</a><br>
+                - <a href="{{ path('account_address') }}">Gérer mes adresses</a><br>
+                - Mes commandes <br>
+                - Modifier mes informations personnelles #}
+            </div> 
+        </div>
+    </div>
+{% endblock %}

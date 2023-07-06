@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('bootstrapcss') }}
+        {{ encore_entry_link_tags('fontawesome') }}
+        <!-- Google Font Kaushan -->
+        <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+        <!-- Google Font Lato -->
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+        <!-- Google Font Roboto Condensed -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    {% endblock %}
+
+    {% block javascripts %}
+        <!-- JQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        {# {{ encore_entry_link_tags('jquery') }} #}
+        {# {{ encore_entry_link_tags('bootstrap') }} #}
+        <!-- JS de Bootstrap -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        {{ encore_entry_script_tags('fontawesome') }}
+        {{ encore_entry_script_tags('stripe') }}
+        {{ encore_entry_script_tags('script') }}
+        {# <script src="{{ asset('assets/js/script.js') }}"></script> #}
+    {% endblock %}
+</head>
+<body>
+
+
+    <!-- Header -->
+
+    <header id="top">
+        <nav class="navbar navbar-dark navbar-expand-lg" id="nav-top">
+            <div class="container">
+                <div class="col-md-12">
+                    <a href="{{ path('home') }}" class="navbar-brand text-center">M<span>o</span>ntrissim<span>o</span> !
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="text-white text-center ">Votre boutique vos produits préféré</p>
+                        </div>
+                    </div>
+                </div>     
+            </div>
+        </nav>
+
+        <nav class="navbar navbar-dark navbar-expand-lg " id="main-nav">
+            <div class="container">
+                <div class="col-md-2">
+                    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle categorie"  href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-bars"></i><b>Categories</b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Men</a></li>
+                                <li><a class="dropdown-item" href="#">Women</a></li>
+                                <li><a class="dropdown-item" href="#">Kids</a></li>
+                                <li><a class="dropdown-item" href="#">Something else</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div> -->
+                    <div class="btn-group categorie w-100">
+                        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                        <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><a href="#"><i class="far fa-heart"></i><br><b>Mes Favoris</b></a>
+                            <span class="sr-only">Toggle Dropdown</span>                    
+                        </button>
+                        <div class="dropdown-menu bckg-connexion text-white">
+                            <form class="px-4 py-3">
+                                <h3>Ajouter vos produits favoris</h3>
+                                <hr>
+                                <ul>
+                                    <li>Selectionnez vos produits</li>
+                                    <li>Faites votre liste selon vos envies</li>
+                                    <li>Ne perdez plus jamais un produit<br>que vous aimé</li>
+                                </ul>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-white" href="#">Voir mes favoris</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <form class="form-nav2 w-100" style="margin:0" action="{{ path('products') }}" method="get">
+                        {# <input type="search" name="productName"   placeholder="Recherches" id="search" class="w-100">
+                        <i class="fas fa-search"></i> #}
+                        <div class="input-group">
+                            <input type="search" name="productName" class="form-control" placeholder="Venez rechercher vos produits préférés !" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit">Button</button>
+                                <a href="{{ path('products') }}" class="btn btn-outline-secondary" role="button" aria-pressed="true">Tout nos produits</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-2 connexion">
+                    {% if not is_granted("ROLE_ADMIN") and not is_granted("ROLE_USER") %}
+
+                        <div class="btn-group w-100">
+                            <button type="button" class="btn" href="{{ path('app_login') }}"><a href="{{ path('app_login') }}"><i class="fa-regular fa-user"></i><br><b>Connexion</b></a></button>
+                            <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu bckg-connexion text-white">
+                                <form method="POST" class="px-4 py-3">
+                                    <div class="form-group">
+                                        <label for="exampleDropdownFormEmail1">Email address</label>
+                                        <input type="email" name="email"  class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleDropdownFormPassword1">Password</label>
+                                        <input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Mot de passe" required>
+                                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"> 
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                                        <label class="form-check-label" for="dropdownCheck">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn sign">Connexion</button>
+                                </form>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-white" href="{{ path('inscription') }}">New around here? Sign up</a>
+                                <a class="dropdown-item text-white" href="{{ path('account_password') }}">Forgot password?</a>
+                            </div>
+                        </div> 
+
+            
+                    {% endif %}
+
+                    
+                    {% if not is_granted("ROLE_ADMIN") and is_granted("ROLE_USER") %}
+                        {# <a class="dropdown-toggle d-flex align-items-center hidden-arrow custom-dropdown-link" href="#" id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="text-center mx-auto">
+                                <img src="{{ asset('uploads/' ~ app.user.avatar) }}" class="rounded-circle" height="25" alt="{{ app.user.firstname }} {{ app.user.lastname }}" loading="lazy" />
+                            </div>
+                        </a>
+                        <small class="mx-auto"> {{ app.user.firstname }}</small>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                            <li><a class="dropdown-item" href="{{ path('app_account') }}">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{ path('app_logout') }}"><i class="fas fa-right-from-bracket"></i> Déconnexion</a></li>
+                        </ul> #}
+                        <div class="btn-group w-100">
+                            <button type="button" class="btn"><a href="{{ path('app_login') }}"><img src="{{ asset('uploads/' ~ app.user.avatar) }}" class="rounded-circle" height="40" alt="{{ app.user.firstname }} {{ app.user.lastname }}" loading="lazy" /><br><b class="mx-auto"> {{ app.user.firstname }} {{ app.user.lastname }}</b></a></button>
+                            <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu bckg-connexion text-white">
+                                <form class="px-4 py-3">
+
+                                    <div class="form-group">
+                                        <li><a class="dropdown-item" href="{{ path('app_account') }}"><i class="fa-regular fa-user"></i>&nbsp;Profile</a></li>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <li><a class="dropdown-item" href=""><i class="fas fa-right-from-bracket"></i>&nbsp;Déconnexion</a></li>
+                                    </div>
+                                </form>
+                                <div class="dropdown-divider"></div>
+                                {# <a class="dropdown-item text-white" href="{{ path('inscription') }}">New around here? Sign up</a> #}
+                                <a class="dropdown-item text-white" href="#">Forgot password?</a>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <div class="btn-group w-100">
+                            <button type="button" class="btn"><a href="{{ path('app_login') }}"><img src="{{ asset('uploads/' ~ app.user.avatar) }}" class="rounded-circle" height="40" alt="{{ app.user.firstname }} {{ app.user.lastname }}" loading="lazy" /><br><b class="mx-auto">ADMIN</b></a></button>
+                            <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+
+                            <div class="dropdown-menu bckg-connexion text-white">
+                                <form class="px-4 py-3">
+
+                                    <div class="form-group">
+                                        <li><a class="dropdown-item" href="{{ path('admin') }}"><i class="fas fa-users-cog"></i>&nbsp;Espace admin</a></li>
+                                    </div>
+                                    <div class="form-group">
+                                        <li><a class="dropdown-item" href="{{ path('app_account') }}"><i class="fa-regular fa-user"></i>&nbsp;Profile</a></li>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <li><a class="dropdown-item" href="{{ path('app_logout') }}"><i class="fas fa-right-from-bracket"></i>&nbsp;Déconnexion</a></li>
+                                    </div>
+                                </form>
+                                {# <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-white" href="#">New around here? Sign up</a>
+                                <a class="dropdown-item text-white" href="#">Forgot password?</a> #}
+                            </div>
+                        </div>    
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+
+        <nav class="navbar navbar-dark navbar-expand-lg fixed" id="nav-bot">
+            <div class="container icon-top">
+                <div class="col-md-2 text-center">
+                    <p class="text-white mb-0">Tendances Hot <i class="fa-solid fa-fire"></i> :</p>
+                </div>
+
+                <div class="col-md-1 text-center">
+                    <a href="{{ path('products') }}" class="text-white"><i class=""></i> Digitale</a>
+                </div>
+
+                <div class="col-md-1 text-center">
+                    <a href="{{ path('products') }}" class="text-white"><i class=""></i>Quartz</a>
+                </div>
+
+                <div class="col-md-1 text-center">
+                    <a href="{{ path('products') }}" class="text-white"><i class=""></i>Mécanique</a>
+                </div> 
+
+                <div class="col-md-1 text-center">
+                    <a href="{{ path('products') }}" class="text-white"><i class=""></i>Automatique</a>
+                </div>
+
+                <div class="col-md-1 text-center">
+                    <a href="{{ path('products') }}" class="text-white"><i class=""></i>Luxe</a>
+                </div>
+
+                <div class="col-md-1 text-center">
+                    <a href="{{ path('products') }}" class="text-white"><i class=""></i>Connectéee</a>
+                </div>
+
+                <div class="col-md-1 text-center">
+                    <a href="{{ path('products') }}" class="text-white"><i class=""></i>Chronographe</a>
+                </div>
+                    
+            </div>
+        </nav>
+
+        <nav class="first">
+            <div class="row w-100 text-center">
+                <div class="col-md-3 mt-4 mb-4 menu-left">
+                    <div class="container navToggleLeft w-50">
+                        <div class="link-nav-toggleLeft align-items-center">
+                            <a href="#">Toutes nos montres</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mt-4 mb-4 divToggleRight">
+                    <div class="container w-50">
+                        <div class="link-nav-toggleRight">
+                            <a href="#">Mécanique</a>
+                            <a href="#">Automatique</a>
+                            <a href="#">Habillée</a>
+                            <a href="#">Quartz</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-4 mb-4 divToggleRight">
+                    <div class="container w-50">
+                        <div class="link-nav-toggleRight">
+                            <a href="#">Chronographe</a>
+                            <a href="#">Plongée</a>
+                            <a href="#">Aviateur</a>
+                            <a href="#">Digitale</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-4 mb-4 divToggleRight">
+                    <div class="container w-50">
+                        <div class="link-nav-toggleRight">
+                            <a href="#">Militaire</a>
+                            <a href="#">Connectéee</a>
+                            <a href="#">Luxe</a>
+                            <a href="#">Analogique</a>
+                        </div>
+                    </div>
+                </div>
+
+          
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- Section Sidebar-->
+        <section id="sidebar" class="bord nav-toggler">  
+            <div class="d-flex flex-column flex-shrink-0 hamburger" style="width: 4.5rem;background-color:var(--ciel);">
+                <a href="{{ path('home') }}" class="d-block p-3 link-dark text-decoration-none " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+                    <i class="fas fa-home text-center"></i>
+                    <span class="visually-hidden">Icon-only</span>
+                </a>
+                <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+                    <li class="nav-item">
+                        {# <button type="button" aria-label="toggle curtain navigation" class="btn btn-danger hamburgerIcon" id="nav-toggler">
+     
+                        </button> #}
+                        <span class="nav-link py-3 border-bottom hamberIcon" id="nav-toggler-icon" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+                            <i class="fas fa-bars"></i>
+                        </span>
+                    </li>
+                    
+                    {# <li>
+                        <span class="nav-link py-3 border-bottom ToggleIcon" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+                            <i class="fas fa-calendar-alt"></i>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="nav-link py-3 border-bottom ToggleIcon" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                            <i class="fas fa-bell"></i>
+                        </span>
+                    </li> #}
+
+                    <li>
+                        <a href="#top" class="nav-link py-3 border-bottom btn-up mt-0 ToggleIcon" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                            <i class="fa-solid fa-circle-chevron-up"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+    <!-- Main -->
+    <main role="main">
+        <!-- Section carousel-->
+        <section id="carousel">
+            <div class="container">
+                {# si le block carousel est défini #}
+                {# {% if block ('carousel') is defined %} 
+                    <div id="carouselExampleIndicators10" class="carousel slide" data-bs-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-bs-target="#carouselExampleIndicators10" data-bs-slide-to="0" class="active"></li>
+                            <li data-bs-target="#carouselExampleIndicators10" data-bs-slide-to="1"></li>
+                            <li data-bs-target="#carouselExampleIndicators10" data-bs-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner border border-danger">
+
+                            <div class="carousel-item active">
+                                {% for key,item in carouselHeader %}
+                                    <button type="button" data-bs-target="#carouselExampleIndicators10" data-bs-slide-to="{{ key }}" {% if key == 0 %}class="active" {% endif %} aria-current="true"></button>
+                                    <img src="{{ asset('uploads/' ~ item.illustration) }}" class="img-fluid w-100 h-100" alt="{{ item.name }}"> 
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                        
+
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators10" role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+
+                        <a class="carousel-control-next" href="#carouselExampleIndicators10" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                {% endif %} #}
+                {% if block ('carousel') is defined %}
+                    <div id="carouselExampleIndicators10" class="carousel slide mt-5" data-bs-touch="false">
+                        <div class="carousel-indicators">
+                            {% for key,item in carouselHeader %}
+                                <button type="button" data-bs-target="#carouselExampleIndicators10" data-bs-slide-to="{{ key }}" {% if key == 0 %}class="active" {% endif %} aria-current="true"></button>
+                            {% endfor %}
+                        </div>
+
+                        <div class="carousel-inner">
+                            {% for key,item in carouselHeader %}
+                                <div class="carousel-item {% if key == 0 %}active{% endif %}">
+                                    <div class="overlay"></div>
+                                    <img class="first-slide w-100 h-100" src="{{ asset('uploads/' ~ item.illustration) }}" alt="{{ item.name }}">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h1 class="text-start text-uppercase">{{ item.name }}</h1>
+                                        <p class="text-start">{{ item.description }}</p>
+                                        <p class="text-start"><a class="btn btn-lg btn-primary" href="{{ item.bntUrl }}" role="button">{{ item.btnTitle }}</a></p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators10" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators10" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+
+                    </div>
+                {% endif %}
+                {# {% if block('carousel2') is defined %}
+                
+                {% endif %} #}
+                
+                   
+                
+                {# si le block carousel n'est pas défini, alors ajoute un margin-top de 5 #}
+                {# <div class="container {% if block('carousel') is not defined %}mt-5{% endif %}" style="margin-top: 100px;">
+                    {% block body %}{% endblock %}
+                </div>      #}
+            </div>  
+        </section>
+
+        {% block body %}{% endblock %}
+ 
+        <!-- Footer -->
+        <footer>
+            {% if block('footer') is defined %}
+                <!-- Section newsletter -->
+                <section id="newsletter">
+                    <div class="container">
+                        <div class="col-md-8" style="margin:0 auto;">
+                            <div class="row">
+                                <div class="col-md-4 mt-4">
+                                    <img src="img/newsletter.png" class="img-fluid"alt="">
+                                </div>
+
+                                <div class="col-md-8 mt-5">
+                                    <h4>Pour encore plus de bons plans et conseils<br>Inscrivez vous à la Newsletter !</h4>
+                                    <input type="text" class="w-100" name="news" id="news" placeholder="Your email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section foot-top -->
+                <section id="foot-top" class="foot-top">
+                    <div class="container">
+                        <div class="ft-content text-center">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <i class="fas fa-comment-dots mt-5 mb-5"></i>
+                                    <div class="row">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium architecto modi perspiciatis omnis ipsa commodi dignissimos? Ab, laudantium consectetur vel obcaecati autem non eveniet quo error totam cupiditate porro corrupti dolorum maxime ipsa minima sequi recusandae cumque. Voluptate vero laboriosam optio accusamus fugiat, beatae porro sunt aliquam commodi velit temporibus?</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <i class="fas fa-trophy mt-5 mb-5"></i>
+                                    <div class="row">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium architecto modi perspiciatis omnis ipsa commodi dignissimos? Ab, laudantium consectetur vel obcaecati autem non eveniet quo error totam cupiditate porro corrupti dolorum maxime ipsa minima sequi recusandae cumque. Voluptate vero laboriosam optio accusamus fugiat, beatae porro sunt aliquam commodi velit temporibus?</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <i class="fas fa-sack-dollar mt-5 mb-5"></i>
+                                    <div class="row">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium architecto modi perspiciatis omnis ipsa commodi dignissimos? Ab, laudantium consectetur vel obcaecati autem non eveniet quo error totam cupiditate porro corrupti dolorum maxime ipsa minima sequi recusandae cumque. Voluptate vero laboriosam optio accusamus fugiat, beatae porro sunt aliquam commodi velit temporibus?</p>
+                                    </div>
+                                </div>  
+
+                                <div class="col-md-3">
+                                    <i class="fas fa-tags mt-5 mb-5"></i>
+                                    <div class="row">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium architecto modi perspiciatis omnis ipsa commodi dignissimos? Ab, laudantium consectetur vel obcaecati autem non eveniet quo error totam cupiditate porro corrupti dolorum maxime ipsa minima sequi recusandae cumque. Voluptate vero laboriosam optio accusamus fugiat, beatae porro sunt aliquam commodi velit temporibus?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section foot-bot -->
+                <section id="foot-bot" class="foot-bot">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10 fb-content text-center mt-4 text-white">
+                                <p class="mb-0">Pour le bien de tous nous assurons une neutralité carbone, c'est une thématique qui nous tiens vraiment à coeur et nous faisons profiter de cela à tous nos clients !</p>
+                                <img class="img-fluid" src="img/qualite.png" alt="qualite">
+                            </div> 
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section main-foot -->
+                <section id="main-foot" class="main-foot">
+                    <div class="container">
+                        <div class="mf-content">
+
+                            <div class="row">
+                                <div class="col-md-2 links text-white">
+                                    <h3>Terms</h3>
+                                    <p><i class="fa-solid fa-chevron-right"></i><a href="">About Us</a></p>
+                                    <p><i class="fa-solid fa-chevron-right"></i><a href="">Contact Us</a></p>
+                                    <p><i class="fa-solid fa-chevron-right"></i><a href="">Our Services</a></p>
+                                </div>
+
+                                <div class="col-md-2 links text-white">
+                                    <h3>Shop</h3>
+                                    <p><i class="fa-solid fa-chevron-right"></i><a href="">About Us</a></p>
+                                    <p><i class="fa-solid fa-chevron-right"></i><a href="">Contact Us</a></p>
+                                    <p><i class="fa-solid fa-chevron-right"></i><a href="">Our Services</a></p>
+                                </div>
+
+                                <div class="col-md-2 links text-white">
+                                    <h3>About</h3>
+                                    <p><i class="fa-solid fa-chevron-right"></i><a href="">About Us</a></p>
+                                    <p><i class="fa-solid fa-chevron-right"></i><a href="">Contact Us</a></p>
+                                    <p><i class="fa-solid fa-chevron-right"></i><a href="">Our Services</a></p>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="newsletter">
+                                        <h3 class="text-white">NEWSLETTER</h3>
+                                        <div class="mail-foot">
+                                            <input type="submit" name="news" id="news" placeholder="Your email">
+                                        </div>
+                                        <div class="social">
+                                            <i class="fa-brands fa-twitter"></i>
+                                            <i class="fa-brands fa-facebook-f"></i>
+                                            <i class="fa-brands fa-youtube"></i>
+                                            <i class="fa-brands fa-linkedin-in"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        
+                            </div>
+
+                            <div class="container text-center" style="width:70%;margin:0 auto">
+                                <div class="row">
+                                    <div class="col-md-6 mention text-center text-white mt-5 mb-2">
+                                        <h5><b>Venez utilisez notre comparateur de prix !</b></h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 text-end webstore">
+                                            <img src="img/apple.png" class="img-fluid w-25" alt="">
+                                        </div>
+
+                                        <div class="col-md-6 text-start mb-3">
+                                            <img src="img/google.png" class="img-fluid w-25" alt="">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="row confidentialité">
+                                    <div class="col-md-4">
+                                        <a href="#">Politique de confidentialité</a>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <a href="#">Paramètre de confidentialité</a>
+                                    </div>
+                                    
+                                    <div class="col-md-4 mb-4">
+                                        <a href="#">Conditions générales</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="text-white text-center mb-0">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio quaerat iure perspiciatis temporibus minus totam, commodi enim molestias velit accusantium nemo, veniam dolore officiis quasi? Accusantium, necessitatibus autem? Repudiandae unde quas ut. Asperiores deserunt soluta rerum repellat! Optio, recusandae est doloribus natus modi, pariatur exercitationem explicabo aut placeat quas iure nemo blanditiis dicta aspernatur mollitia maiores eum cum dolorum possimus! Aliquam maxime repellat nulla laudantium distinctio perspiciatis sint, et dolor.</p>
+                        </div>
+                    </div>    
+                </section>
+            {% endif %}
+
+            {% if block('footer') is not defined %}
+                <!-- Section newsletter -->
+                <section id="newsletter">
+                    <div class="container">
+                        <div class="col-md-8" style="margin:0 auto;">
+                            <div class="row">
+                                <div class="col-md-4 mt-4">
+                                    <img src="/img/newsletter.png" class="img-fluid"alt="">
+                                </div>
+
+                                <div class="col-md-8 mt-5">
+                                    <h4>Pour encore plus de bons plans et conseils<br>Inscrivez vous à la Newsletter !</h4>
+                                    <input type="text" class="w-100" name="news" id="news" placeholder="Your email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section foot-bot -->
+                <section id="foot-bot" class="foot-bot">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 fb-content text-center mt-5 text-white">
+                                <p class="mb-0">Pour le bien de tous nous assurons une neutralité carbone, c'est une thématique qui nous tiens vraiment à coeur et nous faisons profiter de cela à tous nos clients !</p>
+                                <img src="/img/qualite.png" alt="">
+                            </div> 
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+        </footer>
+    </main>
+</body>
+</html>

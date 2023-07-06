@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
+
+    <style>
+
+        .form{
+            margin-top: -3rem;
+        }
+        {# Passons au design de la page de notre formulaire. #}
+        body {
+        background: linear-gradient(45deg, #2f435e, rgb(192, 223, 239)), url("https://img.freepik.com/vecteurs-libre/fond-connexion-reseau-degrade_23-2148874050.jpg");
+        height: 100vh;
+        font-family: arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .container {
+        position: relative;
+        }
+
+        {# Au tour du formulaire. #}
+        form {
+        background: rgba(255, 255, 255, .3);
+        padding: 5rem;
+        height: 320px;
+        border-radius: 20px;
+        border-left: 1px solid rgba(255, 255, 255, .3);
+        border-top: 1px solid rgba(255, 255, 255, .3);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        -moz-backdrop-filter: blur(10px);
+        box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, .2);
+        text-align: center;
+        }
+
+        {# Stylisons maintenant les textes. #}
+        p {
+        color: white;
+        font-weight: 500;
+        opacity: .7;
+        font-size: 2rem;
+        margin-bottom: 60px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+        }
+        
+        a {
+        text-decoration: none;
+        color: #ddd;
+        font-size: 12px;
+        }
+
+        .new{
+            font-size: 12px;
+        }
+
+        a:hover {
+        text-shadow: 2px 2px 6px #00000040;
+        }
+
+        a:active {
+        text-shadow: none;
+        }
+
+        {# Passons aux inputs. #}
+        input {
+        background: transparent;
+        border: none;
+        border-left: 1px solid rgba(255, 255, 255, .3);
+        border-top: 1px solid rgba(255, 255, 255, .3);
+        padding: 1rem;
+        width: 200px;
+        border-radius: 50px;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        -moz-backdrop-filter: blur(5px);
+        box-shadow: 4px 4px 60px rgba(0, 0, 0, .2);
+        color: white;
+        font-weight: 500;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+        transition: all .3s;
+        margin-bottom: 2em;
+        }
+
+        {# Stylisons les interactions. #}
+        input:hover,
+        input[type="email"]:focus,
+        input[type="password"]:focus{
+        background: rgba(255,255,255,0.1);
+        box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2);
+        }
+            
+        input[type="submit"] {
+        width: 150px;
+        font-size: 1rem;
+        cursor: pointer;
+        }
+        
+        ::placeholder {
+        color: #fff;
+        }
+
+        {# Passons aux ombres. #}
+        .drop {
+        background: rgba(255, 255, 255, .3);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 10px;
+        border-left: 1px solid rgba(255, 255, 255, .3);
+        border-top: 1px solid rgba(255, 255, 255, .3);
+        box-shadow: 10px 10px 60px -8px rgba(0,0,0,0.2);
+        position: absolute;
+        transition: all 0.2s ease;
+        }
+
+        {# Finissons notre formulaire en stylisant chaque ombre une par une. #}
+        .drop-1 {
+        height: 80px; width: 80px;
+        top: -20px; left: -40px;
+        z-index: -1;
+        }
+
+        .drop-2 {
+        height: 80px; width: 80px;
+        bottom: -30px; right: -10px;
+        }
+
+        .drop-3 {
+        height: 100px; width: 100px;
+        bottom: 120px; right: -50px;
+        z-index: -1;
+        }
+
+        .drop-4 {
+        height: 120px; width: 120px;
+        top: -60px; right: -60px;
+        }
+
+        .drop-5 {
+        height: 60px; width: 60px;
+        bottom: 170px; left: 90px;
+        z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    {# Débutons par le code HTML. #}
+    <div class="container">
+    {% if error %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ error.messageKey|trans(error.messageData, 'security') }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+        <form method="POST">
+            <div class="form">
+                <p>Bienvenue</p>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" required placeholder="Email"><br>
+                <input type="password" name="password" id="inputPassword" required placeholder="Mot de passe"><br>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"> {# Permet l'authentification #}
+                <input type="submit" value="Connexion"><br>
+                <a href="{{ path('account_password') }}">Mot de passe oublié</a><br>
+                <p class="new">Pas encore inscrit ?  <a href="{{ path('inscription') }}">Créer un compte</a></p>
+            </div>
+        </form>
+
+        <div class="drop drop-1"></div>
+        <div class="drop drop-2"></div>
+        <div class="drop drop-3"></div>
+        <div class="drop drop-4"></div>
+        <div class="drop drop-5"></div>
+    </div>
+</body>
+</html>
+
+   

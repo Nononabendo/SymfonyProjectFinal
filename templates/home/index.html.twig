@@ -1,0 +1,1184 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Boutique Poles {% endblock %}
+
+
+{% block carousel %}{% endblock %}
+{% block body %}
+
+    <!-- Section lastsearch -->
+    <section id="lastSearch">
+        <div class="container mb-5">
+            <h1>Vos dernières recherches</h1>
+            <hr>
+            {# <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                        <a href=""><h3>Voir la catégorie</h3></a>  
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+
+                    <div class="carousel-item ">
+                        <a href=""><h3>Voir la catégorie</h3></a>  
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+
+
+                    <div class="carousel-item ">
+                        <a href=""><h3>Voir la catégorie</h3></a>  
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div> #}
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    {% for key,item in carouselHeader %}
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ key }}" {% if key == 0 %}class="active" {% endif %} aria-current="true"></button>
+                    {% endfor %}
+                </div>
+
+                <div class="carousel-inner">
+                    {% for key,item in carouselHeader %}
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="carousel-item {% if key == 0 %}active{% endif %}">
+                                        <img class="first-slide w-100 h-100" src="{{ asset('uploads/' ~ item.illustration) }}" alt="{{ item.name }}">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h1 class="text-start text-uppercase">{{ item.name }}</h1>
+                                            <p class="text-start">{{ item.description }}</p>
+                                            <p class="text-start"><a class="btn btn-lg btn-primary" href="{{ item.bntUrl }}" role="button">{{ item.btnTitle }}</a></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <small class="text-muted">Last updated 3 mins ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {# <div class="carousel-item {% if key == 0 %}active{% endif %}">
+                            <div class="overlay"></div>
+                            <img class="first-slide w-100 h-100" src="{{ asset('uploads/' ~ item.illustration) }}" alt="{{ item.name }}">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h1 class="text-start text-uppercase">{{ item.name }}</h1>
+                                <p class="text-start">{{ item.description }}</p>
+                                <p class="text-start"><a class="btn btn-lg btn-primary" href="{{ item.bntUrl }}" role="button">{{ item.btnTitle }}</a></p>
+                            </div>
+                        </div> #}
+                    {% endfor %}
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </button>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section promotion -->
+   <div class="container mb-5 title"><h1>Top Promotion</h1><hr><a href=""><h3>Voir les Top Promo</h3></a></div>
+    
+    <section id="promotion">
+        
+        <div class="container mb-5">
+            
+            <div id="carouselExampleIndicators2" class="carousel slide blue-carousel" data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                        <!-- <a href=""><h3>Voir la catégorie</h3></a>   -->
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+
+                    <div class="carousel-item ">
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+
+
+                    <div class="carousel-item ">
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+
+                <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section pcGamers -->
+
+    <section id="pcGamers"> 
+        
+        <div class="container mb-5">
+            <h1>Les meilleurs Pc Gamers</h1>
+            <hr>
+            <div id="carouselExampleIndicators9" class="carousel slide" data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                        <a href=""><h3>Voir la catégorie</h3></a>  
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+
+                    <div class="carousel-item ">
+                        <a href=""><h3>Voir la catégorie</h3></a>  
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+
+
+                    <div class="carousel-item ">
+                        <a href=""><h3>Voir la catégorie</h3></a>  
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+
+                <a class="carousel-control-prev" href="#carouselExampleIndicators9" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a class="carousel-control-next" href="#carouselExampleIndicators9" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Section bestProducts1 -->
+    <div class="container mb-5 title"><h1>Les meilleures machines à café</h1><hr><a href=""><h3>Voir la catégorie</h3></a></div>
+
+    <section id="bestProducts1">
+        <div class="container text-center mb-5">
+            <div id="carouselExampleIndicators3" class="carousel slide blue-carousel" data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text </p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text </p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text </p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text </p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+
+                    <div class="carousel-item ">
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text </p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text </p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text </p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text </p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+
+
+                    <div class="carousel-item ">
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text </p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text </p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text </p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+
+                <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section televison-->
+     <section id="television"> 
+        
+        <div class="container mb-5">
+            <h1>Les meilleures télevison</h1>
+            <hr>
+            <div id="carouselExampleIndicators8" class="carousel slide" data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                        <a href=""><h3>Voir la catégorie</h3></a>  
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+
+                    <div class="carousel-item ">
+                        <a href=""><h3>Voir la catégorie</h3></a>  
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+
+
+                    <div class="carousel-item ">
+                        <a href=""><h3>Voir la catégorie</h3></a>  
+                        <div class="row">
+                            <div class="card-deck">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-1.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-2.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-3.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <img class="d-block w-50 card-img-top img-fluid w-100" src="img/cat-4.jpg" alt="Haircut Project">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <small class="text-muted">Last updated 3 mins ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+
+                <a class="carousel-control-prev" href="#carouselExampleIndicators8" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a class="carousel-control-next" href="#carouselExampleIndicators8" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}
+{% block footer %}{% endblock %}
+

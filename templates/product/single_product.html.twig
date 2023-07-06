@@ -1,0 +1,24 @@
+<div class="card mb-4 border border-secondary singleProduct">
+    <a href="{{ path('product', {slug: product.slug}) }}" class="btn">
+        <img src="{{ asset('uploads/' ~ product.illustration) }}" class="img-fluid mt-5 mb-5" alt="{{ product.name }}">
+    </a>
+    <div class="card-body">
+        <div class="col-md-12 mb-3 text-center">
+            <small>
+                <a href="{{ path('product', {slug: product.slug}) }}" class="btn btn-sm mt-1 mb-1">
+                    <b>{{ product.name }}</b>
+                </a>
+            </small>
+        </div>
+        <div class="d-flex justify-content-between align-items-center"> {# rend flexible, met de l'écart entre les élements puis les aligne  #}
+            {% if product.isStock >= 50 %}
+                <div class="btn-group">
+                    <a class="text-primary" href="{{ path('add_to_cart', {id: product.id}) }}"><i class="fas fa-cart-plus"></i></a>
+                </div>
+                <small class="text-success"><b>{{ (product.price / 100)|number_format(2, ',', ',') }} €</b></small>
+            {% else %}
+                <b class="text-danger">En rupture de stock</b>
+            {% endif %}
+        </div>
+    </div>
+</div>

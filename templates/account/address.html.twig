@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte : mes adresse{% endblock %}
+
+{% block body %}
+    <div class="container-fluid myAdress">
+        <div class="container">
+            <h1 class="text-white pt-5"><span>M</span>es <span>A</span>dresses</h1>
+            {% if app.user.addresses|length == 0 %}
+                <p class="mb-5 myAdress-link text-white">Vous n'avez pas encore d'adresse ? <button type="button" class="btn btn bckg-blackgrey mb-2 btn-lg"><a class="" href="{{ path('account_address_add') }}">Ajoutez en une</a></button></p>
+            {% else %}
+                <div class="row mt-5 mb-5">
+                    {% for address in app.user.addresses %}
+                        <div class="col-md-4">
+                            <div class="card mb-4">
+                                <div class="card-header ">
+                                    <h3 class="text-white">{{ address.firstname }}  {{ address.lastname }}</h3>
+                                </div>
+
+                                <div class="card-body py-5">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            {{ address.address }} {{ address.postal }},<br>
+                                            {{ address.city }} - {{ address.country }}
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="card-footer cardAdress">
+                                    <p class="my-0">
+                                        <button type="button" class="btn btn-info btn-lg"><a href="{{ path('account_address_edit', {'id': address.id}) }}">Éditer</a></button> | <button type="button" class="btn btn-danger btn-lg"><a href="{{ path('account_address_delete', {'id': address.id}) }}">Supprimer</a></button>
+                                        {# <a href="{{ path('account_address_edit', {'id': address.id}) }}">Éditer</a> | <a href="{{ path('account_address_delete', {'id': address.id}) }}">Supprimer</a> #}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <button type="button" class="btn btn bckg-blackgrey btn-lg mb-5"><a href="{{ path('account_address_add') }}">Ajouter une adresse</a></button>
+
+        </div>
+    </div>
+{% endblock %}
+

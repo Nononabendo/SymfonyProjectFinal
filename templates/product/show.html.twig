@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block body %}
+    <div class="container-fluid showProduct">
+        <div class="container">
+            {# On affiche les détails du produit #}
+            <h1><span>E</span>xcellent <span>P</span>roduit !</h1>
+            <p>Votre choix &nbsp;<span>{{ product.name }}</span> &nbsp;fait parmis des meilleurs produits du moment &nbsp;<i class="fa-solid fa-fire"></i></p>
+            <div class="row cardShowProduct">
+                <div class="col-md-5 mt-5">
+                    {# <img class="mt-5" src="{{ asset('uploads/' ~ product.illustration) }}" alt="{{ product.name }}" class="img-fluid"> #}
+                    <div class="card w-75 mt-4 bckg-blackgrey">
+                        <img src="{{ asset('uploads/' ~ product.illustration) }}" alt="{{ product.name }}" class="img-fluid">
+                        <div class="card-body">
+                            <h5 class="card-title text-center text-white "><b>{{ product.name }}</b></h5>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="col-md-12 stars">
+                                {# <a class="text-center" href="{{ path('product', {slug: product.slug}) }}" class="btn btn-sm w3-hover"> #}
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mt-5 descriptionProduct">
+                    <p class="text-white">{{ product.name }}</p>
+                    {# Évaluation : {{ product.rating }}#}
+                    <p class="text-white">{{ product.subtitle }}</p>
+                    <p class="pb-0">{{ product.description | striptags }}</p>
+                    <div class="btn-group mt-5">
+                        {# Taille: sm - xs - l - m - xl - xxl #}
+                    </div>
+                </div>
+
+                <div class="col-md-3" style="border-left: 5px solid var(--ciel);">
+                    <div class="col-md-12 w3-border w3-padding">
+                        Ce produit est uniquement livré en France métropolitaine et partout en Europe.
+                    </div>
+                    {% if product.isStock >= 50 %}
+                        <h4 class="mt-5 text-success">
+                            <b>Total: {{ (product.price / 100)|number_format(2, ',', ',') }} € </b>
+                        </h4>
+                        <p class="mt-2">Livraison gratuite dès 50 €.</p>
+                        <p class="text-success"> {{ product.isStock }} en stock</p>
+                        {%  else %}
+                        <p class="text-danger {% if product.isStock < 50 %}mt-5{% endif %}">En rupture de stock</p>
+                    {% endif %}
+                    <div class="w3-border-bottom"></div>
+                    <div class="row w3-center">
+                        {% if product.isStock >= 50 %}
+                            <a href="{{ path('add_to_cart', {'id': product.id}) }}" class="btn btn-block btn-primary mt-5 mb-5 w-100"><i class="fas fa-cart-plus"></i> Ajouter au panier</a>
+                            <div class="col-md-6">
+                            <a href="#" onclick="addToFavoris({{ product.id }}); return false;">Ajouter aux favoris</a>
+                            </div>
+                            <div class="col-md-6">
+                            <a href="{{ path('cart_favorite', { 'id': product.id }) }}">Mettre à coté</a>
+                            </div>
+                        {% else %}
+                            <div class="col-md-12">
+                                <a href="{{ path('add_to_cart', {'id': product.id}) }}" class="btn btn-block btn-primary mt-5 mb-5 w-100 disabled ml-2" href="{{ path('app_favoris') }}">
+                                <i class="fas fa-cart-plus"></i> Ajouter au panier
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {# <ul>
+                    {% for product in product %}
+                        <li>{{ product.name }}</li>
+                    {% endfor %}
+                </ul> #}
+
+            </div>
+
+            <div class="popularProduct mt-5">
+                <h1><span>L</span>es <span>F</span>avoris de nos <span>C</span>lients </h1>
+                <p>Découvrez notre sélection des produits les plus populaires !</p>
+                <div class="row">
+                    {% for product in products %}
+                        <div class="col-md-3">
+                            {% include 'product/single_product.html.twig' %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="button" class="btn btn bckg-blackgrey btn-lg mt-3"><a href="{{ path('products') }}">Retourner à la boutique</a></button>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{# {% block javascripts %}
+    <script>
+        const image = document.querySelector('#myimage');
+
+        let zoom = 1;
+        let zoomStep = 0.1;
+        let zoomLimit = 3;
+
+        image.addEventListener('mouseover', () => {
+              zoom += zoomStep;
+              if (zoom > zoomLimit) {
+                zoom = zoomLimit;
+              }
+              image.style.transform = `scale(${zoom})`;
+        });
+
+        image.addEventListener('mouseout', () => {
+              zoom -= zoomStep;
+              if (zoom < 1) {
+                zoom = 1;
+              }
+              image.style.transform = `scale(${zoom})`;
+        });
+    </script>
+{% endblock %} #}
